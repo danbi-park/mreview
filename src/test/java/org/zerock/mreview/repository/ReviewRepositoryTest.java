@@ -16,7 +16,7 @@ public class ReviewRepositoryTest {
     @Autowired
     private ReviewRepository reviewRepository;
 
-    @Test
+    /*@Test
     public void insertMovieReviews() {
         //200개의 리뷰를 등록
         IntStream.rangeClosed(1,200).forEach(i -> {
@@ -34,6 +34,6 @@ public class ReviewRepositoryTest {
 
             reviewRepository.save(movieReview);
         });
-    }
+    }*/
 
 }
