@@ -1,0 +1,58 @@
+.tr-list, replyList{
+    cursor: pointer;
+}
+.tr-list:hover{
+    background: #c2ebfc;
+}
+
+a {text-decoration:none; color:black;}
+
+select {
+    width: 200px; /* 원하는 너비설정 */
+    padding: .4em .2em; /* 여백으로 높이 설정 */
+    font-family: inherit;  /* 폰트 상속 */
+    border: 1px solid #999;
+    border-radius: 5px 0px 0px 5px; /* iOS 둥근모서리 제거 */
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.replyCount {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #000000;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+/* 댓글 스타일 */
+.card-body{
+    border:1px solid gray;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  background: light-gray;
+}
+
+.card-subtitle {
+  margin-top: -0.25rem;
+  margin-bottom: 0;
+  color: blue;
+}
+
+/* 날짜 */
+.card-text {
+            margin-top: -0.5rem;
+            margin-bottom: 0;
+            color: gray;
+          }

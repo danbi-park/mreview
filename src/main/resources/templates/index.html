@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>index</title>
-  <h1>Welcome</h1>
-  <a href="uploadEx">uploadEX</a>
-</head>
-<body>
-
-</body>
-</html>
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <h1>Board List Page</h1>
+        <a href="/movie/register">/movie/register</a><br>
+        <a href="/uploadEx">/uploadEx</a><br>
+    </th:block>
+</th:block>

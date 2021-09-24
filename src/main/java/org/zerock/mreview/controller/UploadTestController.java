@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UploadTestController {
     @GetMapping("uploadEx")
-    public void uploadEx(){
+    public void uploadEx(){ //리소스에 있는 url로 감
 
     }
 }
