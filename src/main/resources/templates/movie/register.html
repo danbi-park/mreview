@@ -13,13 +13,17 @@
             <div class="form-group">
                 <label>Image files</label>
                 <div class="custom-file">
-                    <input id="" class="custom-file-input files" type="file" multiple>
+                    <input type="file" id="fileInput" class="custom-file-input files" multiple>
                     <label class="custom-file-label" data-browse="Browse"></label>
                 </div>
             </div>
             <div style="margin-bottom: 20px;"></div>
+
+<!--
             <div class="box">
             </div>
+-->
+
             <div style="margin-bottom: 20px;"></div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -56,7 +60,7 @@
 
         <script>
             $(document).ready(function(e){
-                var regex = new RegExp("(.*?)\.(exe|sh|zip|alz|tiff)$");
+                var regex = new RegExp("(.*?)\.(exe|sh|zip|alz|tiff)$"); //파일 확장자명
                 var maxSize = 10485760; // 10mb
 
                 function checkExtension(fileName, fileSize){
@@ -72,39 +76,36 @@
                     return true;
                 }
 
-<!--      showResult 함수          -->
-                function showResult(uploadResultArr){
-                var uploadUL = $(".uploadResult ul");
-                var str = "";
+            <!--      showResult 함수          -->
+                    function showResult(uploadResultArr){
+                    var uploadUL = $(".uploadResult ul");
+                    var str = "";
 
-                $(uploadResultArr).each(function(i, obj){
-                    str += "<li data-name='" + obj.fileName + "' data-path='"+obj.
-                    folderPath+"' data-uuid='"+obj.uuid+"'>";
-                    str += " <div>";
-                    str += " <button type='button' data-file=\'"+obj.imageURL + "\' "
-                    str += "class='btn-warning btn-sm'>X</button><br>";
-                    str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>";
-                    str += " </div>";
-                    str += " </li>";
-                });
-                uploadUL.append(str);
-              }
+                    $(uploadResultArr).each(function(i, obj){
+                        str += "<li data-name='" + obj.fileName + "' data-path='"+obj.
+                        folderPath+"' data-uuid='"+obj.uuid+"'>";
+                        str += " <div>";
+                        str += " <button type='button' data-file=\'"+obj.imageURL + "\' "
+                        str += "class='newBtn'></button><br>";
+                        str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>";
+                        str += " </div>";
+                        str += " </li>";
+                    });
+                    uploadUL.append(str);
+                  }
 
 <!-- custom-file-input change 함수 -->
                 $(".custom-file-input").on("change",function() {
-                    var fileName = $(this).val().split("\\").pop();
+                    var fileName = $(this).val().split("\\").pop(); //역슬래쉬로 나눈 후, 끄집어냄(pop)
                     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-
+                                                            //css 클래스 지정      file명을 넣음
                     var formData = new FormData();
-
                     var inputFile = $(this);
-
                     var files = inputFile[0].files;
-
                     var appended = false;
 
                     for(var i=0; i<files.length; i++){
-                        if(!checkExtension(files[i].name, files[i].size) ){
+                        if(!checkExtension(files[i].name, files[i].size) ){ //맨위에 해당 함수 있음
                             return false;
                         }
                         console.log(files[i]);
@@ -125,7 +126,6 @@
                         type: 'POST',
                         dataType: 'json',
                         success: function(result){
-                            //console.log(result);
                             showResult(result);
                         },
                         error: function(jqXHR, textStatus, errorThrown){
@@ -134,7 +134,7 @@
                     }); //업로드 $.ajax
 
 <!--        삭제 이벤트          -->
-                    $('.uploadResult').on('click','.li button',function(e){
+                    $('.uploadResult').on('click','li button',function(e){
                         console.log("delete file");
                         var targetFile = $(this).data("file");
                         var targetLi = $(this).closest("li");
@@ -145,20 +145,20 @@
                             dataType: 'text',
                             type: 'POST',
                             success: function(result){
-                                alert(result);
+                                alert("파일을 지웁니다");
                                 targetLi.remove();
                             }
                         }); //삭제 $.ajax
                     });  // uploadResult -> click
                 }); //custom-file-input -> change
 
-<!--    -->
+<!-- Submit 버튼 클릭  -->
                 $(".btn-primary").on("click", function(e){
                     e.preventDefault();
 
                     var str = "";
 
-                    $(".uploadResult li").each(function(i, obj){ //i:인덱스, obj: 내용물
+                    $(".uploadResult li").each(function(i, obj){   //i:인덱스, obj: 내용물
                         var target = $(obj);
 
                         str += "<input type='hidden' name='imageDTOList[" + i
@@ -168,10 +168,8 @@
                         str += "<input type='hidden' name='imageDTOList[" + i
                             + "].uuid' value='" + target.data('uuid') + "'>";
                     });
-                    $(".box").html(str);
-                    //$("form").submit;
-                }); //btn-primary "click"
-
+                   $("form").submit;
+                });
             }); //ready
 
 
