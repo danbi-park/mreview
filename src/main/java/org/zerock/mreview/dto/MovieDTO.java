@@ -16,14 +16,12 @@ import java.util.List;
 @NoArgsConstructor
 public class MovieDTO {
     private Long mno;
-
     private String title;
 
     @Builder.Default
     private List<MovieImageDTO> imageDTOList = new ArrayList<>();
 
     private  double avg;
-
     private  int reviewCnt;
 
     private LocalDateTime regDate;

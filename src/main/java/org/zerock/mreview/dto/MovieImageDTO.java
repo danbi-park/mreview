@@ -10,8 +10,8 @@ import java.net.URLEncoder;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class MovieImageDTO {
     private String uuid;
     private String imgName;

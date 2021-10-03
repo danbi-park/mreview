@@ -13,6 +13,7 @@ import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review,Long> {
     //review를 불러오고 member를 불러오게 한다.
+    //메서드쿼리 방식
     @EntityGraph(attributePaths = {"member"}, type = EntityGraph.EntityGraphType.FETCH)
     List<Review> findByMovie(Movie movie);
 

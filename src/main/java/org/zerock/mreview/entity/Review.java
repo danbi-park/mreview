@@ -24,4 +24,12 @@ public class Review extends BaseEntity{
     private int grade;
 
     private String text;
+
+    public void changeGrade(int grade) {   //set개념이라 매개변수가 있음
+        this.grade = grade;
+    }
+
+    public void changeText(String text) {  //댓글달기
+        this.text = text;
+    }
 }
