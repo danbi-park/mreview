@@ -5,7 +5,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.zerock.mreview.entity.Movie;
-import sun.util.resources.cldr.gv.LocaleNames_gv;
 
 import java.util.List;
 

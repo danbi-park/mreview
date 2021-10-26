@@ -21,7 +21,7 @@ class MemberRepositoryTest {
 
     @Autowired
     private ReviewRepository reviewRepository;
-/*    @Test
+    @Test
     public void insertMember(){
         IntStream.rangeClosed(1,100).forEach(i->{
             Member member = Member.builder()
@@ -31,7 +31,7 @@ class MemberRepositoryTest {
                     .build();
             memberRepository.save(member);
         });
-    }*/
+    }
 
     //안에 지워야할 내용이 있기 때문에 어노테이션 두 개 더 붙여줌 지연방식으로 순서대로 가려고
     @Commit
