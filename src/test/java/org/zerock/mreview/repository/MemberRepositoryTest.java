@@ -2,6 +2,7 @@ package org.zerock.mreview.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +22,8 @@ class MemberRepositoryTest {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
     @Test
     public void insertMember(){
         IntStream.rangeClosed(1,100).forEach(i->{

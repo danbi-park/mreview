@@ -26,8 +26,7 @@ class MovieRepositoryTest {
     @Autowired
     private MovieImageRepository imageRepository;
 
-    /*
-    @Commit
+    /*@Commit
     @Transactional
     @Test
     public void insertMovies() {
